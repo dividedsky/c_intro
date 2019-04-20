@@ -20,7 +20,25 @@ int roll_dice(int num_die, int sides)
   return total;
 }
 
+int to_hit(int mod)
+{
+  /* accepts a to-hit modifier from the defender
+     rolls a die, and returns true if hit is successful,
+     false if hit is a miss
+     base to-hit value is 15
+     */
+  int to_hit = 15;
+  int roll = roll_dice(1, 20); // roll one 20-sided die
+  if (roll >= to_hit - mod)
+  {
+    printf("hit\n");
+    return 1;
+  }
+  printf("miss\n");
+  return 0;
+}
+
 int main(void) {
-  roll_dice(6, 20);
+  to_hit(5);
 }
 
