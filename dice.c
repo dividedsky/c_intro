@@ -38,7 +38,21 @@ int to_hit(int mod)
   return 0;
 }
 
+int dmg_roll(int dmg_reduction, int dmg_bonus, int dmg_dice, int dmg_sides)
+{
+  int dmg = roll_dice(dmg_dice, dmg_sides);
+  dmg += dmg_bonus;
+  dmg -= dmg_reduction;
+  return dmg;
+}
+
 int main(void) {
-  to_hit(5);
+  if(to_hit(5))
+  {
+    int dmg = dmg_roll(0, 2, 1, 6);
+    printf("damage is %d\n", dmg);
+  } else {
+    printf("the attack misses\n");
+  }
 }
 
