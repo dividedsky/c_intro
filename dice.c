@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <time.h>
 
+typedef struct Player {
+  char *name;
+  int hitpoints;
+  int armor_class;
+  int attack;
+  int dmg_reduction
+} Player;
+
 /* simulate dice rolling
    accepts two args: number of dice and sides of dice
    returns total dice roll */
