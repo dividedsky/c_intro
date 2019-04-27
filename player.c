@@ -20,6 +20,7 @@ void sizes(void) {
   printf("pointer:\t%1lu\n", sizeof(int*));
   printf("Player:\t%1lu\n", sizeof(Player));
 }
+
 Player *make_player(char *name, int hp, int ac, int att, int dmg_reduction) {
   int len = strlen(name);
   printf("length is %d\n", len);
@@ -33,12 +34,26 @@ Player *make_player(char *name, int hp, int ac, int att, int dmg_reduction) {
 
 }
 
+void print_player(Player *player) 
+{
+  printf("Name: %s\n", player->name);
+  printf("hitpoints: %d\n", player->hitpoints);
+  printf("armor class: %d\n", player->armor_class);
+}
+
+void destroy_player(Player *player)
+{
+  /* free(player->name); */
+  free(player);
+}
+
 int main(void) {
   /* Player player; /1* this does work, but I'm going to use my function for now *1/ */
   sizes();
-  char *name = "jjustinjustinjustinjustinjustinustin";
+  char *name = "justin";
   Player *player = make_player(name, 20, 10, 5, 1);
-  printf("Name: %s\n", player->name);
-  printf("size of Player is %lu\n", sizeof(*player));
+  print_player(player);
+  printf("size of player is %lu\n", sizeof(*player));
+  destroy_player(player);
   return 0;
 }
