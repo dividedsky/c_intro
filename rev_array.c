@@ -38,27 +38,32 @@ void reverse_array(int *arr, int size)
   int *begin, *end;
   printf("size is %d\n", size);
   printf("size of arr is %ld\n", sizeof(*arr));
-  printf("total is %ls\n", arr + size);
+  printf("total is %p\n", arr + size);
   /* what would happen if we tried to assign to an int instead of
     a pointer? */
   printf("begin and end are now initialized.\n");
   /* attempting to access the unitialized pointers causes 
      a seg fault */
+  /* noo - it's not that they're uninitialized. it's that they
+     don't have pointees. you can access unitialized data and get
+     garbage back, but you can't access memory you haven't allocated */
   begin = arr;
   end = (begin + size - 1);
   /* the above line works, but why don't we need to use
      begin + sizeof(int)? is it because end is an int
-     pointer, so it knows every move to advance by four bytes? */
-  printf("begin is at address %p and stores value %d\n", begin, *begin);
-  printf("end is at address %p and stores value %d\n", end, *end);
+     pointer, so it knows every move to advance by four bytes?
+     I think that's exactly the reason. */
+  /* printf("begin is at address %p and stores value %d\n", begin, *begin); */
+  /* printf("end is at address %p and stores value %d\n", end, *end); */
 
   for (int i = 0; i< size; i++) {
-    printf("%d\n", *(arr + i));
+    printf("%d ", *(arr + i));
   }
+  printf("\n");
 
   while (end > begin) {
-    printf("begin is %d\n", *begin);
-    printf("end it %d\n", *end);
+    /* printf("begin is %d\n", *begin); */
+    /* printf("end it %d\n", *end); */
     int tmp = *begin;
     *begin = *end;
     *end = tmp;
@@ -67,8 +72,9 @@ void reverse_array(int *arr, int size)
   }
   printf("reversed array:\n");
   for (int i = 0; i< size; i++) {
-    printf("%d\n", *(arr + i));
+    printf("%d ", *(arr + i));
   }
+  printf("\n");
 }
 
 /* I don't think a function like this can work since arrays
