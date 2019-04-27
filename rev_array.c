@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void reverse_array(int *arr, size_t size);
+void reverse_array(int *arr, int size);
 int array_size(int *arr);
 
 int main(void)
@@ -21,20 +21,51 @@ int main(void)
   /* with a local array declared with [], we can do this */
   printf("size of arr is %ld\n", sizeof(arr));
   printf("size of an int is %lu\n", sizeof(int));
-  printf("Therefore, the size is %ld\n", sizeof(arr) / sizeof(int));
+  printf("Therefore, the length is %ld\n", sizeof(arr) / sizeof(int));
   int size = sizeof(arr) / sizeof(int);
   int *p = arr;
   reverse_array(p, size);
 
 }
 
-void reverse_array(int *arr, size_t size)
+void reverse_array(int *arr, int size)
 {
   /* printf("array is %d\n", *arr); */
   /* printf("second is %d\n", *(arr + 1)); */
   /* printf("length of array is %d\n", array_size(arr)); */
   /* int i = array_size(arr); */
   /* printf("i is %d\n", i); */
+  int *begin, *end;
+  printf("size is %d\n", size);
+  printf("size of arr is %ld\n", sizeof(*arr));
+  printf("total is %ls\n", arr + size);
+  /* what would happen if we tried to assign to an int instead of
+    a pointer? */
+  printf("begin and end are now initialized.\n");
+  /* attempting to access the unitialized pointers causes 
+     a seg fault */
+  begin = arr;
+  end = (begin + size - 1);
+  /* the above line works, but why don't we need to use
+     begin + sizeof(int)? is it because end is an int
+     pointer, so it knows every move to advance by four bytes? */
+  printf("begin is at address %p and stores value %d\n", begin, *begin);
+  printf("end is at address %p and stores value %d\n", end, *end);
+
+  for (int i = 0; i< size; i++) {
+    printf("%d\n", *(arr + i));
+  }
+
+  while (end > begin) {
+    printf("begin is %d\n", *begin);
+    printf("end it %d\n", *end);
+    int tmp = *begin;
+    *begin = *end;
+    *end = tmp;
+    end--;
+    begin++;
+  }
+  printf("reversed array:\n");
   for (int i = 0; i< size; i++) {
     printf("%d\n", *(arr + i));
   }
