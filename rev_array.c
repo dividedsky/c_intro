@@ -2,6 +2,7 @@
 
 void reverse_array(int *arr, int size);
 int array_size(int *arr);
+int total_array(int *arr, int len);
 
 int main(void)
 {
@@ -25,6 +26,10 @@ int main(void)
   int size = sizeof(arr) / sizeof(int);
   int *p = arr;
   reverse_array(p, size);
+  int total = total_array(arr, size);
+  printf("total of array is %d\n", total);
+
+  return 0;
 
 }
 
@@ -90,3 +95,12 @@ int array_size(int *arr)
 
 /* aha! here we go: https://stackoverflow.com/questions/37538/how-do-i-determine-the-size-of-my-array-in-c
    so we have to always pass a parameter with the size of the array */
+
+int total_array(int *arr, int len)
+{
+  int total = 0;
+  for (int i = 0; i < len; i++) {
+    total += *(arr + i);
+  }
+  return total;
+}
