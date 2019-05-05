@@ -62,6 +62,7 @@ void destroy_player(Player *player)
 
 int main(void) {
   /* Player player; /1* this does work, but I'm going to use my function for now *1/ */
+  srand(time(0));
   sizes();
   char *name = "justin";
   Player *player = make_player(name, 20, 10, 5, 1);
@@ -69,7 +70,7 @@ int main(void) {
   print_player(player);
   print_player(goblin);
   printf("size of player is %lu\n", sizeof(*player));
-  to_hit(1);
+  /* to_hit(1); */
   combat(player, goblin);
   destroy_player(player);
   destroy_player(goblin);

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+
 typedef struct Player {
   char *name;
   int hitpoints;
@@ -16,7 +17,6 @@ typedef struct Player {
 
 int roll_dice(int num_die, int sides)
 {
-  srand(time(NULL)); // seed random with time value
   int total = 0;
   for (int i = 0; i < num_die; i++) 
   {
@@ -41,9 +41,10 @@ int to_hit(int mod)
   {
     printf("hit\n");
     return 1;
-  }
+  } else {
   printf("miss\n");
   return 0;
+  }
 }
 
 int dmg_roll(int dmg_reduction, int dmg_bonus, int dmg_dice, int dmg_sides)
