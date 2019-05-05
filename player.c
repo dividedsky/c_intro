@@ -13,13 +13,22 @@ typedef struct Player {
 
 /* reference to see type sizes */
 void sizes(void) {
-  printf("char:\t%1lu\n", sizeof(char));
-  printf("Int:\t%1lu\n", sizeof(int));
-  printf("Long:\t%1lu\n", sizeof(long));
-  printf("float:\t%1lu\n", sizeof(float));
-  printf("double:\t%1lu\n", sizeof(double));
-  printf("pointer:\t%1lu\n", sizeof(int*));
-  printf("Player:\t%1lu\n", sizeof(Player));
+  // print dashes
+  // since I'm going to do this multiple times, I'll use a pointer
+  char *message = "SIZEOF LIST";
+  printf("%s\n", message);
+  for (int i = 0; i < strlen(message); i++) {
+    printf("-");
+  }
+  printf("\n");
+  printf("%-10s\%lu\n", "char:", sizeof(char));
+  printf("%-10s\%lu\n", "Int:", sizeof(int));
+  printf("%-10s\%lu\n", "Long:", sizeof(long));
+  printf("%-10s\%lu\n", "float:", sizeof(float));
+  printf("%-10s\%lu\n", "double:", sizeof(double));
+  printf("%-10s\%lu\n", "pointer:", sizeof(int*));
+  printf("%-10s\%lu\n", "Player:", sizeof(Player));
+  printf("\n\n");
 }
 
 Player *make_player(char *name, int hp, int ac, int att, int dmg_reduction) {
