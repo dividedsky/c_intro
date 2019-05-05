@@ -15,6 +15,7 @@ typedef struct Player {
 void sizes(void) {
   printf("char:\t%1lu\n", sizeof(char));
   printf("Int:\t%1lu\n", sizeof(int));
+  printf("Long:\t%1lu\n", sizeof(long));
   printf("float:\t%1lu\n", sizeof(float));
   printf("double:\t%1lu\n", sizeof(double));
   printf("pointer:\t%1lu\n", sizeof(int*));
