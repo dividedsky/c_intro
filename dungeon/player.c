@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include "game.h"
 
 typedef struct Player {
   char *name;
@@ -32,28 +33,28 @@ void sizes(void) {
 }
 
 Player *make_player(char *name, int hp, int ac, int att, int dmg_reduction) {
-  int len = strlen(name);
-  printf("length is %d\n", len);
   Player *player = malloc(sizeof(Player));
-  player->name = name;
-  printf("player name is %s\n", player->name);
+  player->name = strdup(name);
   player->hitpoints = hp;
   player->armor_class = ac;
   player->attack = att;
   return player;
-
 }
 
 void print_player(Player *player) 
 {
-  printf("Name: %s\n", player->name);
-  printf("hitpoints: %d\n", player->hitpoints);
-  printf("armor class: %d\n", player->armor_class);
+  printf("----------\n");
+  printf("%s\%s\n", "Name:", player->name);
+  printf("%-10s%d\n", "hitpoints: ", player->hitpoints);
+  printf("%-10s%d\n", "armor class", player->armor_class);
+  printf("%-10s%d\n", "dmg reduction", player->dmg_reduction);
+  printf("----------");
+  printf("\n");
 }
 
 void destroy_player(Player *player)
 {
-  /* free(player->name); */
+  free(player->name);
   free(player);
 }
 
@@ -62,8 +63,12 @@ int main(void) {
   sizes();
   char *name = "justin";
   Player *player = make_player(name, 20, 10, 5, 1);
+  Player *goblin = make_player("goblin", 10, 5, 1, 0);
   print_player(player);
+  print_player(goblin);
   printf("size of player is %lu\n", sizeof(*player));
+  to_hit(1);
   destroy_player(player);
+  destroy_player(goblin);
   return 0;
 }

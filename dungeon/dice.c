@@ -7,7 +7,7 @@ typedef struct Player {
   int hitpoints;
   int armor_class;
   int attack;
-  int dmg_reduction
+  int dmg_reduction;
 } Player;
 
 /* simulate dice rolling
@@ -54,6 +54,7 @@ int dmg_roll(int dmg_reduction, int dmg_bonus, int dmg_dice, int dmg_sides)
   return dmg;
 }
 
+/*
 int main(void) {
   if(to_hit(5))
   {
@@ -63,4 +64,5 @@ int main(void) {
     printf("the attack misses\n");
   }
 }
+*/
 
