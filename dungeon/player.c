@@ -4,6 +4,7 @@
 #include <string.h>
 #include "game.h"
 
+/*
 typedef struct Player {
   char *name;
   int hitpoints;
@@ -11,6 +12,7 @@ typedef struct Player {
   int attack;
   int dmg_reduction;
 } Player;
+*/
 
 /* reference to see type sizes */
 void sizes(void) {
@@ -68,6 +70,7 @@ int main(void) {
   print_player(goblin);
   printf("size of player is %lu\n", sizeof(*player));
   to_hit(1);
+  combat(player, goblin);
   destroy_player(player);
   destroy_player(goblin);
   return 0;
