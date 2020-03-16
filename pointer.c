@@ -18,6 +18,19 @@ void print_string(char *str)
   }
 }
 
+void pointer_test(void)
+{
+  int *p = malloc(sizeof(int *));
+  int **q = &p;
+  int a[] = {4, 8, 15, 16, 23, 42};
+  p = &a[1];
+  q = &p;
+  printf("p and q initialized. the value of p,q is %d,%d. Adress of p,q is %p,%p\n", *p, **q, p, q);
+  p++;
+  printf("address of a[2] is %p\n", &a[2]);
+  printf("p has been incremented. the value of p,q is %d,%d. Adress of p,q is %p,%p\n", *p, **q, p, q);
+}
+
 int main(void) 
 {
   char *s = "this is a string";
@@ -36,6 +49,7 @@ int main(void)
   printf("value is %c\n", (*p1 + 1)); /* trying to use pointer arithmetic, but this does not work. this will
                                          print 'u' because it dereferences to t, then adds 1 => u */
   printf("second char is %c\n", *(p1 + 1)); // this correctly dereferences the second char
+  pointer_test();
 
 
   // memory allocation
